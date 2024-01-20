@@ -1,0 +1,32 @@
+---
+import Tabs from '../components/Tabs.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<div class="container top">
+		<div class="flex">
+			<Tabs
+				headings={['Tab 1', 'Tab 2', 'Tab 3']}
+				contents={[
+					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
+					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
+					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
+				]}
+			/>
+		</div>
+	</div>
+
+	<div class="container top">
+		<div class="flex">
+			<Tabs
+				headings={['Tab 1', 'Tab 2', 'Tab 3']}
+				contents={[
+					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
+					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
+					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
+				]}
+			/>
+		</div>
+	</div>
+</Layout>

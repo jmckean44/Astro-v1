@@ -1,0 +1,47 @@
+---
+import { TITLE } from './Constants';
+import logo from '../assets/logo.svg?raw';
+import Navigation from './Navigation.astro';
+import Hamburger from './Hamburger.astro';
+---
+
+<header>
+	<div id="logo">
+		<a href="/"><Fragment set:html={logo} alt={TITLE} /></a>
+	</div>
+	<Hamburger />
+	<Navigation />
+</header>
+
+<style is:global>
+	header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-content: space-around;
+		align-items: center;
+		padding: 0 3%;
+		background: rgba(0, 0, 0, 0.8);
+		z-index: 999999999;
+	}
+	#logo {
+		order: 0;
+		flex: 1 0 auto;
+		max-width: 60px;
+		margin-right: auto;
+		padding: 5px;
+		/* border: 1px red solid; */
+	}
+
+	@media (max-width: 600px) {
+		header {
+			position: fixed;
+			width: 100%;
+			padding: 0 20px 0 20px;
+		}
+	}
+</style>
