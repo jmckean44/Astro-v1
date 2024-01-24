@@ -9,3 +9,14 @@ document.addEventListener('astro:page-load', () => {
 		overlay.classList.toggle('open');
 	});
 });
+
+document.addEventListener('astro:after-swap', () => ({}));
+
+// Disable scroll-to-top default behaviour
+// document.addEventListener('astro:after-swap', () =>
+// 	window.scrollTo({
+// 		left: 0,
+// 		top: 0,
+// 		behavior: 'instant',
+// 	})
+// );

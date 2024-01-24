@@ -134,7 +134,7 @@ h4,
 h5,
 h6 {
 	color: var(--theme-clr);
-	font-size: calc(minmax());
+	margin-bottom: 0;
 }
 
 p {
@@ -191,18 +191,21 @@ img {
 	 LISTS
 ================================================ */
 ul,
-ol,
-dl {
+ol {
 	font-size: inherit;
-	line-height: 1.6;
-	margin-bottom: 0.5rem;
-	list-style-position: inside;
+	line-height: 1.4;
+	margin: 0 0 0.5rem 1.5rem;
+	list-style-position: outside;
 	font-family: inherit;
 }
 
 ol {
 	margin-left: 1.4rem;
 	list-style-position: inside !important;
+}
+
+li:not(footer li) {
+	margin-bottom: 0.5rem;
 }
 
 /* =================================
@@ -328,6 +331,7 @@ footer ul {
 	padding: 0.5em 1em;
 	text-decoration: none;
 	font-weight: bold;
+	text-transform: uppercase;
 	border: 1px red solid;
 	transition: 0.3s;
 }
@@ -345,7 +349,6 @@ footer ul {
 		transition: 1s;
 	}
 	.nav-links li a {
-		margin-bottom: 0.5rem;
 		font-size: 1rem;
 		background: none;
 	}
@@ -388,14 +391,12 @@ footer ul {
 	right: 0;
 	bottom: 0;
 	background: var(--header-bg);
-	transition: 1s;
 	z-index: 1;
 }
 .overlay.open {
 	display: block;
 	height: 100vh;
 	opacity: 1;
-	transition: 1s;
 }
 
 /* =================================
@@ -496,8 +497,8 @@ footer {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: end;
-	align-content: end;
+	align-items: flex-end;
+	align-content: flex-end;
 	justify-content: space-between;
 	background: #f2f2f2;
 	width: 100%;

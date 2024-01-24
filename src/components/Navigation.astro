@@ -3,19 +3,14 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove first "/"
 ---
 
-<nav aria-label="Mobile & Desktop Navigation">
+<nav aria-label="Primary">
 	<ul class="nav-links">
 		<li><a class={currentPath === 'ui' ? 'active' : ''} href="/ui">UI</a></li>
 		<li><a class={currentPath === 'about' ? 'active' : ''} href="/about">ABOUT</a></li>
-		<li><a class={currentPath === 'residences' ? 'active' : ''} href="/residences">RESIDENCES</a></li>
-		<li><a class={currentPath === 'amenities' ? 'active' : ''} href="/amenities">AMENITIES</a></li>
+		<li><a class={currentPath === 'containers' ? 'active' : ''} href="/containers">Containers</a></li>
 		<li><a class={currentPath === 'blog' ? 'active' : ''} href="/blog">BLOG</a></li>
 		<li><a class={currentPath === 'contact' ? 'active' : ''} href="/contact">CONTACT</a></li>
 	</ul>
 </nav>
 
 <div class="overlay"></div>
-
-<script>
-	import '../scripts/menu.js';
-</script>

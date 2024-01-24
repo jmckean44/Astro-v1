@@ -1,18 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import banner from '../img/banner.jpg';
 ---
 
-<Layout title="Company Name">
-	<main>
-		<div class="container-flex">
-			<h1>HOME</h1>
+<Layout>
+	<div>
+		<Image src={banner} alt="Banner Image" />
+	</div>
+	<div class="container top bottom">
+		<div class="flex">
 			<div>
 				Images in the public/ folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a local
-				or authorized remote image’s dimensions, file type, and quality for control over your displayed image. The resulting
-				<img /> tag includes alt, loading, and decoding attributes and infers image dimensions to avoid Cumulative Layout Shift (CLS).
+				or authorized remote image’s dimensions, file type, and quality for control over your displayed image.
+			</div>
+			<div>
+				<Image src={banner} width={banner.width / 2} densities={[1.5, 2]} alt="Banner Image" />
 			</div>
 		</div>
-	</main>
+	</div>
 </Layout>
 
 <style></style>

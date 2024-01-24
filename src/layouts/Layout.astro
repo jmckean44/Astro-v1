@@ -3,8 +3,9 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { TITLE, DESCRIPTION, KEYWORDS, LOGO } from '../components/Constants.ts';
-import { ViewTransitions } from 'astro:transitions';
-const { pageTitle } = Astro.props;
+//const { frontmatter } = Astro.props;
+//const { pageTitle } = frontmatter;
+import { ViewTransitions, fade } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -12,6 +13,8 @@ const { pageTitle } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<link rel="canonical" href="HTTPS://..." />
+
 		<meta name="description" content={DESCRIPTION} />
 		<meta name="keywords" content={KEYWORDS} />
 		<meta name="theme-color" content="#000" />
@@ -21,12 +24,24 @@ const { pageTitle } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-config" content="img/browserconfig.xml" />
+
+		<!-- <meta name="view-transtions" content="same-origin" /> -->
+
 		<meta property="og:title" content={TITLE} />
 		<meta property="og:name" content={DESCRIPTION} />
 		<meta property="og:url" content={DESCRIPTION} />
 		<meta property="og:image" content={LOGO} />
 		<meta property="og:description" content={DESCRIPTION} />
 		<meta property="og:type" content="website" />
+
+		<!-- FAVICONS -->
+		<link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png" />
+		<!-- <link rel="manifest" href="site.webmanifest" /> -->
+		<link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#ffffff" />
+		<link rel="shortcut icon" href="./img/favicon.ico" />
 
 		<!-- JSON-LD  -->
 		<script type="application/ld+json">
@@ -50,30 +65,19 @@ const { pageTitle } = Astro.props;
 			}
 		</script>
 
-		<!-- FAVICONS -->
-		<link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
-		<link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png" />
-		<link rel="manifest" href="site.webmanifest" />
-		<link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#ffffff" />
-		<link rel="shortcut icon" href="./img/favicon.ico" />
-		<link rel="canonical" href="" />
-
 		<!-- GOOGLE TAG (gtag.js) -->
 
-		<title>{pageTitle} - {TITLE}</title>
-		<!-- <Hamburger /> -->
+		<title></title>
 		<ViewTransitions />
 	</head>
-	<body>
-		<!-- <body transition:animate={myFade}> -->
+	<body transition:animate={fade({ duration: '.4s' })}>
 		<Header />
 		<main>
 			<slot />
-			<!-- <slot>test in here</slot>
-				<slot name="hello" /> -->
 		</main>
 		<Footer />
+		<!-- <script>
+			import '../scripts/menu.js';
+		</script> -->
 	</body>
 </html>

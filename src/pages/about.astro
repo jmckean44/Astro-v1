@@ -1,48 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const about = await Astro.glob('../content/about.mdx');
-const obj = Object.assign({}, ...about);
-const { Content, frontmatter } = obj;
+// const about = await Astro.glob('../content/about.mdx');
+// const obj = Object.assign({}, ...about);
+// const { Content, frontmatter } = obj;
 const pageTitle = 'About Us';
-//import { fade } from 'astro:transitions';
+import { Image } from 'astro:assets';
+import banner from '../img/banner.jpg';
 ---
 
-<Layout title="About Us">
+<Layout {pageTitle}>
 	<div class="container top">
 		<div class="flex">
-			<!-- <h1 transition:animate={fade({ duration: '.5s' })}>{pageTitle}</h1> -->
 			<h1>{pageTitle}</h1>
 		</div>
-	</div>
-	<div class="container bottom">
+
 		<div class="flex">
 			<div>
-				<Content />
+				<h2>Heading 2</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis porttitor mauris. Sed quis nulla malesuada, imperdiet ipsum eleifend, pharetra lacus. Maecenas vehicula tincidunt
+					lorem sed elementum. Vestibulum luctus consectetur risus at aliquet. Donec ac sapien malesuada, congue neque ultrices, fringilla velit. Suspendisse potenti. Maecenas ac elit sem. Suspendisse
+					malesuada ligula eu efficitur vulputate.
+				</p>
+				<Image src={banner} alt="" />
 			</div>
 			<div>
-				<Content />
+				<h3>Heading 3</h3>
+				<p>
+					Mauris tincidunt urna a elit ultricies porttitor. Donec vestibulum nibh euismod lectus rutrum sollicitudin. Aliquam luctus urna volutpat erat malesuada sodales. Etiam dapibus interdum est,
+					sit amet aliquet turpis accumsan non.
+				</p>
 			</div>
 			<div>
-				<Content />
-			</div>
-		</div>
-	</div>
-
-	<div class="container bottom">
-		<div class="grid">
-			<div>
-				Images in the public folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a local
-				or authorized remote image’s dimensions, file type, and quality for control over your displayed image. The resulting tag includes alt, loading, and decoding attributes and infers image
-				dimensions to avoid Cumulative Layout Shift.
-			</div>
-			<div>
-				Images in the public folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a local
-				or authorized remote image’s dimensions, file type, and quality for control over your displayed image.
-			</div>
-			<div>
-				Images in the public folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a local
-				or authorized remote image’s dimensions, file type, and quality for control over your displayed image. The resulting tag includes alt, loading, and decoding attributes and infers image
-				dimensions to avoid Cumulative Layout Shift.
+				<h4>Heading 4</h4>
+				<p>
+					Mauris tincidunt urna a elit ultricies porttitor. Donec vestibulum nibh euismod lectus rutrum sollicitudin. Aliquam luctus urna volutpat erat malesuada sodales. Etiam dapibus interdum est,
+					sit amet aliquet turpis accumsan non.
+				</p>
 			</div>
 		</div>
 	</div>
