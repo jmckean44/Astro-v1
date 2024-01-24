@@ -8,7 +8,13 @@ import { TITLE, DESCRIPTION, KEYWORDS, LOGO } from '../components/Constants.ts';
 import { ViewTransitions, fade } from 'astro:transitions';
 ---
 
-<!doctype html>
+<script>
+	import '../scripts/menu.js';
+	window.addEventListener('navigate', () => {
+		console.log('navigated');
+	});
+</script>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -76,8 +82,5 @@ import { ViewTransitions, fade } from 'astro:transitions';
 			<slot />
 		</main>
 		<Footer />
-		<!-- <script>
-			import '../scripts/menu.js';
-		</script> -->
 	</body>
 </html>

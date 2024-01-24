@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import banner from '../img/banner.jpg';
 ---
 
 <Layout>
 	<div>
-		<Image src={banner} alt="Banner Image" />
+		<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
 	</div>
 	<div class="container top bottom">
 		<div class="flex">
@@ -15,7 +15,7 @@ import banner from '../img/banner.jpg';
 				or authorized remote image’s dimensions, file type, and quality for control over your displayed image.
 			</div>
 			<div>
-				<Image src={banner} width={banner.width / 2} densities={[1.5, 2]} alt="Banner Image" />
+				<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
 			</div>
 		</div>
 	</div>

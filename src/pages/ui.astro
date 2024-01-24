@@ -1,6 +1,15 @@
 ---
 import Tabs from '../components/Tabs.astro';
 import Layout from '../layouts/Layout.astro';
+
+import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+
+import { getImage } from 'astro:assets';
+import myImage from '../img/banner.jpg';
+const optimizedBackgroundImage = await getImage({ src: myImage });
+
+import banner from '../img/banner.jpg';
 ---
 
 <Layout>
@@ -19,14 +28,17 @@ import Layout from '../layouts/Layout.astro';
 
 	<div class="container top">
 		<div class="flex">
-			<Tabs
-				headings={['Tab 1', 'Tab 2', 'Tab 3']}
-				contents={[
-					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
-					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
-					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
-				]}
-			/>
+			<Image src={banner} alt="Banner Image" />
+			<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
+			<div class="background-img" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
 		</div>
 	</div>
 </Layout>
+
+<style>
+	.background-img {
+		padding-bottom: 50%;
+		background-size: cover;
+		width: 100%;
+	}
+</style>
