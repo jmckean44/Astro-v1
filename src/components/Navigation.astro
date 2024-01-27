@@ -3,7 +3,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove first "/"
 ---
 
-<nav aria-label="Primary">
+<nav role="navigation" aria-label="Main">
 	<ul class="nav-links">
 		<li><a class={currentPath === 'ui' ? 'active' : ''} href="/ui">UI</a></li>
 		<li><a class={currentPath === 'about' ? 'active' : ''} href="/about">ABOUT</a></li>
@@ -13,4 +13,136 @@ const currentPath = pathname.slice(1); // remove first "/"
 	</ul>
 </nav>
 
+<div class="hamburger hamburger--collapse">
+	<div class="hamburger-box">
+		<div class="hamburger-inner"></div>
+	</div>
+</div>
+
 <div class="overlay"></div>
+
+<style>
+	/* =================================
+		 HAMBURGER
+	==================================== */
+	.hamburger {
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding: 21px 20px 9px;
+		display: inline-block;
+		cursor: pointer;
+		transition-property: opacity, filter;
+		transition-duration: 0.15s;
+		transition-timing-function: linear;
+		background: #eee;
+		z-index: 9999999;
+	}
+
+	.hamburger.is-active .hamburger-inner,
+	.hamburger.is-active .hamburger-inner::before,
+	.hamburger.is-active .hamburger-inner::after {
+		background-color: var(--theme-clr);
+	}
+
+	.hamburger-box {
+		width: 30px;
+		height: 20px;
+		display: inline-block;
+		position: relative;
+	}
+
+	.hamburger-inner,
+	.hamburger-inner::before,
+	.hamburger-inner::after {
+		width: 30px;
+		height: 3px;
+		background-color: var(--theme-clr);
+		border-radius: 3px;
+		position: absolute;
+		transition-property: transform;
+		transition-duration: 0.15s;
+		transition-timing-function: ease;
+	}
+	.hamburger-inner::before,
+	.hamburger-inner::after {
+		content: '';
+		display: block;
+	}
+	.hamburger-inner::before {
+		top: -10px;
+	}
+	.hamburger-inner::after {
+		bottom: -10px;
+	}
+
+	.hamburger--collapse .hamburger-inner {
+		top: auto;
+		bottom: 0;
+		transition-duration: 0.13s;
+		transition-delay: 0.13s;
+		transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+	.hamburger--collapse .hamburger-inner::after {
+		top: -20px;
+		transition:
+			top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+			opacity 0.1s linear;
+	}
+	.hamburger--collapse .hamburger-inner::before {
+		transition:
+			top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+			transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+
+	.hamburger--collapse.is-active .hamburger-inner {
+		transform: translate3d(0, -10px, 0) rotate(-45deg);
+		transition-delay: 0.22s;
+		transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	.hamburger--collapse.is-active .hamburger-inner::after {
+		top: 0;
+		opacity: 0;
+		transition:
+			top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+			opacity 0.1s 0.22s linear;
+	}
+	.hamburger--collapse.is-active .hamburger-inner::before {
+		top: 0;
+		transform: rotate(-90deg);
+		transition:
+			top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+			transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+
+	@media (min-width: 641px) {
+		.hamburger {
+			display: none;
+		}
+	}
+
+	@media (min-width: 641px) {
+		.overlay,
+		.overlay.open {
+			display: none !important;
+		}
+	}
+
+	.overlay {
+		display: none;
+		position: fixed;
+		opacity: 0;
+		height: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: var(--header-bg);
+		z-index: 1;
+	}
+	.overlay.open {
+		display: block;
+		height: 100vh;
+		opacity: 1;
+	}
+</style>

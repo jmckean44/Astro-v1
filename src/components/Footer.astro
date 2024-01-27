@@ -1,6 +1,7 @@
 ---
 import Navigation from './Navigation.astro';
-import Copyright from '../components/Copyright.astro';
+import { TITLE } from './Constants';
+const currentYear = new Date().getFullYear();
 ---
 
 <footer>
@@ -9,7 +10,7 @@ import Copyright from '../components/Copyright.astro';
 	</div>
 	<div></div>
 	<div>
-		<Copyright />
+		<p>&copy; {currentYear} {TITLE}</p>
 		<a href="/privacy">Privacy Policy</a>
 	</div>
 </footer>

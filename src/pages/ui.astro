@@ -1,44 +1,188 @@
 ---
-import Tabs from '../components/Tabs.astro';
 import Layout from '../layouts/Layout.astro';
+import Tabs from '../components/Tabs.astro';
+
+import arrowDown from '../img/arrow-down.svg';
+
+import banner from '../img/banner.jpg';
+import banner2 from '../img/banner2.jpg';
 
 import { Image } from 'astro:assets';
 import { Picture } from 'astro:assets';
-
+// Background Image
 import { getImage } from 'astro:assets';
 import myImage from '../img/banner.jpg';
 const optimizedBackgroundImage = await getImage({ src: myImage });
-
-import banner from '../img/banner.jpg';
 ---
 
 <Layout>
+	<uiMenu></uiMenu>
 	<div class="container top">
 		<div class="flex">
-			<Tabs
-				headings={['Tab 1', 'Tab 2', 'Tab 3']}
-				contents={[
-					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
-					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
-					'Astro is an amazing static site generator that allows you to build really fast websites with little to no production JavaScript.',
-				]}
-			/>
+			<div><button aria-pressed="false">Click me</button></div>
+			<div><Image src={banner} alt="Banner Image" /></div>
+			<div><Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" /></div>
+			<div>
+				<!-- BACKGROUND IMAGE -->
+				<div class="background-img" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
+			</div>
 		</div>
 	</div>
 
-	<div class="container top">
-		<div class="flex">
-			<Image src={banner} alt="Banner Image" />
-			<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
-			<div class="background-img" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
+	<br /><br />
+
+	<Tabs headings={['Tab 1', 'Tab 2', 'Tab 3']} contents={['Tab 1 copy...', 'Tab 2 copy...', 'Tab 3 copy...']} />
+
+	<br /><br />
+
+	<div class="accordion" title="Accordion">
+		<div class="accordion-item" title="Accordion Items">
+			<div class="accordion-header" title="Accordion Headings">
+				<h2>Heading 1</h2>
+				<Image src={arrowDown} class="arrow" alt="Arrow Down" />
+			</div>
+			<div class="accordion-content">
+				<p>Content 1</p>
+			</div>
+		</div>
+		<div class="accordion-item" title="Accordion Items">
+			<div class="accordion-header" title="Accordion Headings">
+				<h2>Heading 2</h2>
+				<Image src={arrowDown} class="arrow" alt="Arrow Down" />
+			</div>
+			<div class="accordion-content">
+				<p>Content 2</p>
+			</div>
 		</div>
 	</div>
+
+	<br /><br />
+
+	<swiper-container class="swiper" slides-per-view="1" speed="500" loop="true" navigation="true" effect="fade">
+		<swiper-slide><Image src={banner} loading="lazy" alt="Banner Image" /></swiper-slide>
+		<swiper-slide><Image src={banner2} loading="lazy" alt="Banner Image" /></swiper-slide>
+	</swiper-container>
 </Layout>
 
 <style>
 	.background-img {
-		padding-bottom: 50%;
+		padding-bottom: 60%;
 		background-size: cover;
 		width: 100%;
 	}
+	.swiper {
+		margin: 0 auto;
+		max-width: 1200px;
+	}
 </style>
+
+<script>
+	const accordionItems = document.querySelectorAll('.accordion-item');
+	//const accordionContent = document.querySelectorAll('.accordion-content');
+
+	accordionItems.forEach((item) =>
+		item.addEventListener('click', () => {
+			const isItemOpen = item.classList.contains('active');
+			accordionItems.forEach((item) => item.classList.remove('active'));
+			if (!isItemOpen) {
+				item.classList.toggle('active');
+			}
+		})
+	);
+</script>
+
+<style>
+	.accordion {
+		max-width: 400px;
+		margin: 0 auto;
+		position: relative;
+		transform-style: preserve-3d;
+	}
+	.accordion .accordion-header {
+		cursor: pointer;
+		font-weight: bold;
+		color: #292d34;
+		position: relative;
+		background: #f2f2f2;
+		padding: 10px;
+		transition: all 0.5s ease;
+		border-bottom: #fff solid;
+	}
+
+	.accordion .accordion-header .arrow {
+		position: absolute;
+		right: 0rem;
+		top: 1.5rem;
+		transform: translate(-100%, -50%);
+		transition: all 0.5s ease;
+		width: 15px;
+	}
+
+	.accordion .accordion-item.active .accordion-header .arrow,
+	.accordion .accordion-item:hover .accordion-header .arrow {
+		transform: translate(-100%, -50%) rotate(180deg);
+	}
+
+	.accordion .accordion-item .accordion-content {
+		color: #000;
+		max-height: 0;
+		font-weight: normal;
+		padding: 0 1.5rem 0 0.25rem;
+		opacity: 0;
+		overflow: hidden;
+		transition: all 0.5s linear;
+		animation: slideDownReverse 1s ease-in-out;
+	}
+
+	.accordion .accordion-item .accordion-header:hover,
+	.accordion .accordion-item.active .accordion-header:hover,
+	.accordion .accordion-item.active .accordion-header {
+		color: red;
+	}
+	.accordion .accordion-item.active .accordion-content {
+		opacity: 1;
+		max-height: 300px;
+		animation: slideDown 1s ease-in-out;
+	}
+
+	@keyframes slideDown {
+		from {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+	@keyframes slideDownReverse {
+		from {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+	}
+</style>
+
+<!-- <script>
+	const swiper = new Swiper('.swiper', {
+		direction: 'fade',
+		crossFade: true,
+		loop: true,
+		parallax: true,
+
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'bullets',
+		},
+
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	});
+</script> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

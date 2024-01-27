@@ -12,11 +12,13 @@
 	"dependencies": {
 		"@astrojs/check": "^0.4.1",
 		"@astrojs/mdx": "^2.0.5",
+		"@astrojs/netlify": "^5.0.0",
 		"@astrojs/sitemap": "^3.0.5",
 		"astro": "^4.2.1",
 		"autoprefixer": "^10.4.17",
 		"cssnano": "^6.0.3",
-		"mdx": "^0.3.1",
+		"mdx": "^0.2.3",
+		"swiper": "^11.0.5",
 		"typescript": "^5.3.3"
 	},
 	"devDependencies": {
