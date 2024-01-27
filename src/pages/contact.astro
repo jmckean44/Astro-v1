@@ -10,99 +10,104 @@ import banner from '../img/banner.jpg';
 		<Image src={banner} alt="Banner Image" />
 	</div>
 	<div class="container top">
-		<div class="flex">
+		<div class="no-grid">
 			<h1>{pageTitle}</h1>
+			<p>Fields marked with an astericks * are required.</p>
 		</div>
 	</div>
-	<div class="container bottom">
+	<div class="container top">
 		<!-- reCAPTCHA -->
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-		<form action="thankyou.astro" method="POST" id="mc-embedded-subscribe-form">
-			<div>
-				<label for="First Name">First Name</label>
-			</div>
-			<div>
-				<input maxlength="30" class="firstName" name="FirstName" type="text" placeholder="First Name" autocomplete="given-name" />
-				<span>FIRST NAME</span>
-			</div>
+		<div class="no-grid">
+			<form action="thankyou.astro" method="POST" id="mc-embedded-subscribe-form">
+				<div>
+					<label for="First Name">First Name</label>
+				</div>
+				<div>
+					<input maxlength="30" class="firstName" name="FirstName" type="text" placeholder="First Name" autocomplete="given-name" required />
+					<span>FIRST NAME</span>
+				</div>
 
-			<div>
-				<label for="Last Name">Last Name</label>
-			</div>
-			<div>
-				<input maxlength="40" class="lastName" name="LastName" type="text" placeholder="Last Name" autocomplete="family-name" />
-				<span>LAST NAME</span>
-			</div>
+				<div>
+					<label for="Last Name">Last Name</label>
+				</div>
+				<div>
+					<input maxlength="40" class="lastName" name="LastName" type="text" placeholder="Last Name" autocomplete="family-name" />
+					<span>LAST NAME</span>
+				</div>
 
-			<div>
-				<label for="Email">Email</label>
-			</div>
-			<div>
-				<input maxlength="40" class="email" name="Email" type="email" placeholder="Email" autocomplete="on" required />
-				<span>EMAIL</span>
-			</div>
+				<div>
+					<label for="Email">Email</label>
+				</div>
+				<div>
+					<input maxlength="40" class="email" name="Email" type="email" placeholder="Email" autocomplete="on" required />
+					<span>EMAIL</span>
+				</div>
 
-			<div>
-				<label for="Phone">Phone</label>
-			</div>
-			<div>
-				<input maxlength="40" class="phone" name="Phone" type="tel" placeholder="Phone" autocomplete="on" />
-				<span>PHONE</span>
-			</div>
+				<div>
+					<label for="Phone">Phone</label>
+				</div>
+				<div>
+					<input maxlength="40" class="phone" name="Phone" type="tel" placeholder="Phone" autocomplete="on" />
+					<span>PHONE</span>
+				</div>
 
-			<div>
-				<select name="" title="Please select one">
-					<option value="">Please select one</option>
-					<option value="Internet">INTERNET</option>
-				</select>
-			</div>
+				<div>
+					<label for="Select Options">Please select</label>
+				</div>
+				<div>
+					<select name="" title="Please select one">
+						<option value="">Please select one</option>
+						<option value="Internet">INTERNET</option>
+					</select>
+				</div>
 
-			<label class="label">
-				<input type="radio" name="Are_You_a_Realtor__c" value="true" class="radio-input" />
-				<div class="radio-design"></div>
-				<div class="label-text"></div>
-			</label>
+				<div>
+					<label for="Radio Buttons">Please select</label>
+				</div>
+				<label class="label">
+					<input type="radio" name="Realtor" value="true" class="radio-input" />
+					<div class="radio-design"></div>
+					<div class="label-text">Option 1</div>
+				</label>
+				<label class="label">
+					<input type="radio" name="Realtor" value="false" class="radio-input" />
+					<div class="radio-design"></div>
+					<div class="label-text">Option 2</div>
+				</label>
 
-			<br />
+				<br />
 
-			<label class="label">
-				<input type="radio" name="Are_You_a_Realtor__c" value="false" class="radio-input" />
-				<div class="radio-design"></div>
-				<div class="label-text"></div>
-			</label>
+				<label class="label">
+					<input type="checkbox" name="Unit_Type_MS__c[]" value="Real Estate" class="checkbox-input" id="realEstate" />
+					<div class="checkbox-design"></div>
+					<div class="label-text">Option 1</div>
+					<input type="checkbox" name="Unit_Type_MS__c[]" value="Marina" class="checkbox-input" id="marina" />
+					<div class="checkbox-design"></div>
+					<div class="label-text">Option 2</div>
+				</label>
 
-			<br />
+				<br />
 
-			<label class="label">
-				<input type="checkbox" name="Unit_Type_MS__c[]" value="Real Estate" class="checkbox-input" id="realEstate" />
-				<div class="checkbox-design"></div>
-				<div class="label-text"></div>
-			</label>
+				<label class="label"> </label>
 
-			<br />
+				<div>
+					<textarea class="comments" rows="5" maxlength="2000" name="COMMENTS" placeholder="Comments"></textarea>
+					<span>Comments</span>
+				</div>
 
-			<label class="label">
-				<input type="checkbox" name="Unit_Type_MS__c[]" value="Marina" class="checkbox-input" id="marina" />
-				<div class="checkbox-design"></div>
-				<div class="label-text"></div>
-			</label>
+				<br />
 
-			<div>
-				<textarea class="comments" rows="5" maxlength="2000" name="COMMENTS" placeholder="Comments"></textarea>
-				<span>Comments</span>
-			</div>
+				<div class="g-recaptcha" data-sitekey=""></div>
 
-			<br />
+				<div id="submit-button">
+					<input type="submit" name="submit" value="submit" class="button" />
+				</div>
 
-			<div class="g-recaptcha" data-sitekey=""></div>
-
-			<div id="submit-button">
-				<input type="submit" name="submit" value="submit" class="button" />
-			</div>
-
-			<p class="disclaimer">Disclaimer...</p>
-		</form>
+				<p class="disclaimer">Disclaimer...</p>
+			</form>
+		</div>
 	</div>
 </Layout>
 
@@ -112,7 +117,7 @@ import banner from '../img/banner.jpg';
 		--input-font-clr: var(--theme-clr);
 		--input-button-bg: var(--theme-clr);
 		--input-font-weight: var(--theme-clr);
-		--input-font-size: 16px;
+		--input-font-size: 12px;
 		--input-font: var(--theme-font);
 		--input-font-spacing: 1px;
 		--input-button-bg: var(--theme-clr);
@@ -120,7 +125,9 @@ import banner from '../img/banner.jpg';
 		--input-border-radius: 3px;
 		--input-padding: 0.5rem 1rem;
 		--input-margin: 0 0 1rem;
+		--input-background: #fff;
 		--input-background-focus: #f9f9f9;
+		--input-focus-boxshadow: 0 0 5px #ccc;
 	}
 
 	#signupForm,
@@ -129,9 +136,11 @@ import banner from '../img/banner.jpg';
 		display: grid;
 		grid-template-columns: 1fr 3fr;
 		gap: 0.5rem;
+		align-items: center;
 		max-width: var(--form-width);
 		width: 100%;
 		border: 1px red solid;
+		text-transform: uppercase;
 	}
 
 	#signupForm > div,
@@ -221,9 +230,11 @@ import banner from '../img/banner.jpg';
 	::-webkit-input-placeholder {
 		color: var(--font-clr);
 	}
+
 	input::placeholder {
 		color: var(--font-clr);
 	}
+
 	textarea::placeholder {
 		color: var(--font-clr);
 	}
@@ -242,11 +253,6 @@ import banner from '../img/banner.jpg';
 		@include transition(all 0.2s ease);
 	}
 
-	input::-moz-focus-inner {
-		border: 0;
-		padding: 0;
-	}
-
 	input[type='checkbox'] {
 		box-sizing: border-box;
 		padding: 0;
@@ -256,15 +262,6 @@ import banner from '../img/banner.jpg';
 	input[type='number']::-webkit-inner-spin-button,
 	input[type='number']::-webkit-outer-spin-button {
 		height: auto;
-	}
-
-	input[type='search'] {
-		box-sizing: border-box;
-	}
-
-	input[type='search']::-webkit-search-cancel-button,
-	input[type='search']::-webkit-search-decoration {
-		-webkit-appearance: none;
 	}
 
 	textarea {
@@ -334,13 +331,17 @@ import banner from '../img/banner.jpg';
 	.label {
 		display: flex;
 		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-wrap: wrap;
 		justify-content: flex-start;
 		align-items: center;
-		align-content: stretch;
-		margin-right: 15px;
+		align-content: flex-start;
+		margin-right: 1rem;
 		cursor: pointer;
 		transition: 0.3s;
+	}
+
+	.label > * {
+		flex: 0 1 auto;
 	}
 
 	.label:hover,
@@ -354,7 +355,7 @@ import banner from '../img/banner.jpg';
 		margin-left: 7px;
 		letter-spacing: 0.5px;
 		text-transform: uppercase;
-		font-size: 0.7rem;
+		/* font-size: 0.7rem; */
 		font-weight: bold;
 		transition: 0.3s;
 	}
@@ -476,22 +477,18 @@ import banner from '../img/banner.jpg';
 		padding: var(--input-padding);
 		margin: 0 0 1rem;
 		font-size: var(--input-font-size);
-		text-transform: uppercase !important;
+		text-transform: uppercase;
 		font-weight: var(--input-font-weight);
 		font-family: var(--input-font);
 		letter-spacing: var(--input-font-spacing);
-		line-height: normal;
 		color: var(--font-clr);
 		background-color: var(--input-background);
 		border: var(--input-border);
 		border-radius: var(--input-border-radius);
 		appearance: none;
 		cursor: pointer;
-		background-image: url('../img/arrow-down-select.svg');
+		background: url('../img/arrow-down.svg') no-repeat right 10px center;
 		background-size: 15px;
-		background-position: right center;
-		background-origin: content-box;
-		background-repeat: no-repeat;
 	}
 	select:focus {
 		outline: none;
@@ -501,12 +498,5 @@ import banner from '../img/banner.jpg';
 		transition:
 			box-shadow 0.5s,
 			border-color 0.25s ease-in-out;
-	}
-	select::-ms-expand {
-		display: none;
-	}
-	select[multiple] {
-		height: auto;
-		background-image: none;
 	}
 </style>
