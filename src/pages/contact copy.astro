@@ -23,7 +23,7 @@ import banner from '../img/banner.jpg';
 
 		<div class="flex">
 			<div class="flex-order-1">
-				<form action="thankyou.astro" method="POST" class="grid">
+				<form action="thankyou.astro" method="POST" id="mc-embedded-subscribe-form" class="grid">
 					<div>
 						<label for="First Name" class="visuallyhidden">First Name</label>
 						<input maxlength="30" class="firstName" name="FirstName" type="text" placeholder="First Name" aria-label="required" required />
@@ -56,7 +56,7 @@ import banner from '../img/banner.jpg';
 						</select>
 					</div>
 
-					<div class="grid-columns-span">
+					<div>
 						<label class="label">
 							<label for="Radio Buttons" class="visuallyhidden"></label>
 							<input class="radio-input" type="radio" name="x" value="Yes" />
@@ -71,7 +71,7 @@ import banner from '../img/banner.jpg';
 						</label>
 					</div>
 
-					<div class="grid-columns-span">
+					<div class="grid">
 						<label class="label">
 							<input type="checkbox" name="Names" value="" class="checkbox-input" />
 							<div class="checkbox-design"></div>
@@ -85,7 +85,7 @@ import banner from '../img/banner.jpg';
 						</label>
 					</div>
 
-					<div class="grid-columns-span">
+					<div class="comments">
 						<label for="Comments" class="visuallyhidden">Comments</label>
 						<textarea class="comments" rows="5" maxlength="2000" name="COMMENTS" placeholder="Comments"></textarea>
 						<span>Comments</span>
@@ -93,7 +93,7 @@ import banner from '../img/banner.jpg';
 
 					<!-- <div class="g-recaptcha" data-sitekey=""></div> -->
 
-					<div id="submit-button" class="grid-columns-span">
+					<div id="submit-button">
 						<input type="submit" name="submit" value="submit" class="button" />
 					</div>
 					<div><p class="disclaimer">Disclaimer...</p></div>
@@ -163,25 +163,16 @@ import banner from '../img/banner.jpg';
 	========================= */
 	.grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 50% 50%;
 		align-items: baseline;
-		gap: 1rem;
+		gap: var(--gap-sm);
 		margin: 0;
 		width: 100%;
 	}
 
-	.grid .grid-columns-span {
-		grid-column: 1 / 3;
-	}
-
 	@media (max-width: 1000px) {
 		.grid {
-			max-width: var(--form-width);
 			grid-template-columns: 1fr;
-			margin: 0 auto;
-		}
-		.grid .grid-columns-span {
-			grid-column: 1 / 1;
 		}
 	}
 
@@ -190,6 +181,7 @@ import banner from '../img/banner.jpg';
 	========================= */
 	form {
 		width: 100%;
+		max-width: var(--form-width) !important;
 		text-transform: uppercase;
 		margin: 0 auto;
 	}
@@ -237,7 +229,6 @@ import banner from '../img/banner.jpg';
 		margin-top: 1.5rem;
 		color: var(--font-clr);
 		line-height: 1.4;
-		text-transform: none;
 	}
 
 	.grecaptcha-badge {
@@ -289,7 +280,7 @@ import banner from '../img/banner.jpg';
 		box-sizing: border-box;
 		width: 100%;
 		padding: var(--input-padding);
-		/* margin: var(--input-margin); */
+		margin: var(--input-margin);
 		font-family: var(--input-font);
 		font-size: var(--input-font-size);
 		font-weight: var(--input-font-weight);

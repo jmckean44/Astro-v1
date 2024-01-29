@@ -16,16 +16,12 @@ const optimizedBackgroundImage = await getImage({ src: myImage });
 ---
 
 <Layout>
-	<uiMenu></uiMenu>
 	<div class="container top">
 		<div class="flex">
 			<div><button aria-pressed="false">Click me</button></div>
 			<div><Image src={banner} alt="Banner Image" /></div>
 			<div><Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" /></div>
-			<div>
-				<!-- BACKGROUND IMAGE -->
-				<div class="background-img" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
-			</div>
+			<div class="background-img" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
 		</div>
 	</div>
 
@@ -65,8 +61,11 @@ const optimizedBackgroundImage = await getImage({ src: myImage });
 </Layout>
 
 <style>
+	.flex > div {
+		flex: 1 1 0;
+	}
 	.background-img {
-		padding-bottom: 60%;
+		padding-bottom: 10%;
 		background-size: cover;
 		width: 100%;
 	}
