@@ -3,15 +3,36 @@ import Layout from '../layouts/Layout.astro';
 //import { pageTitle } from '../components/Constants';
 //const { pageTitle } = Astro.props;
 const pageTitle = 'Contact Us';
-// import { Image } from 'astro:assets';
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import banner from '../img/banner.jpg';
-import RegisterForm from '../components/RegisterForm';
 ---
 
+<!-- <script>
+	let inputBox = document.querySelector('#inputBox');
+	inputBox.addEventListener('input', (e) => {
+		if (['frodo', 'bilbo', 'sam'].includes(e.target.value)) {
+			document.querySelector('#msg').innerHTML = 'Already have that Hobbit';
+		} else {
+			document.querySelector('#msg').innerHTML = 'ok good';
+		}
+	});
+
+	function testResults(form) {
+		let inputValue = form.inputbox.value;
+		let formData = new FormData(form);
+		let object = {};
+		formData.forEach(function (value, key) {
+			object[key] = value;
+		});
+		var json = JSON.stringify(object);
+		alert(json);
+
+		alert(JSON.stringify(Object.fromEntries(formData)));
+	}
+</script> -->
 <Layout title={pageTitle}>
 	<div class="banner-img">
-		<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
+		<Image src={banner} alt="Banner Image" />
 	</div>
 	<div class="container top">
 		<div class="container-width">
@@ -19,9 +40,92 @@ import RegisterForm from '../components/RegisterForm';
 			<p>Fields marked with an astericks * are required.</p>
 		</div>
 	</div>
-
 	<div class="container top bottom">
-		<RegisterForm client:only="react" />
+		<!-- reCAPTCHA -->
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+		<div class="flex">
+			<div class="flex-order-1">
+				<form action="thankyou.astro" method="POST" class="grid">
+					<div>
+						<label for="First Name" class="visuallyhidden">First Name</label>
+						<input maxlength="30" class="firstName" name="FirstName" type="text" placeholder="First Name" aria-label="required" required />
+						<span>FIRST NAME</span>
+					</div>
+
+					<div>
+						<label for="Last Name" class="visuallyhidden">Last Name</label>
+						<input maxlength="40" class="lastName" name="LastName" type="text" placeholder="Last Name" />
+						<span>LAST NAME</span>
+					</div>
+
+					<div>
+						<label for="Email" class="visuallyhidden">Email</label>
+						<input maxlength="40" class="email" name="Email" type="email" placeholder="Email" aria-label="required" required />
+						<span>EMAIL</span>
+					</div>
+
+					<div>
+						<label for="Phone" class="visuallyhidden">Phone</label>
+						<input maxlength="40" class="phone" name="Phone" type="tel" placeholder="Phone" />
+						<span>PHONE</span>
+					</div>
+
+					<div>
+						<label for="Select Options" class="visuallyhidden">Select</label>
+						<select name="" title="Please select one">
+							<option value="">Please select one</option>
+							<option value="Internet">INTERNET</option>
+						</select>
+					</div>
+
+					<div class="grid-columns-span">
+						<label class="label">
+							<label for="Radio Buttons" class="visuallyhidden"></label>
+							<input class="radio-input" type="radio" name="x" value="Yes" />
+							<div class="radio-design"></div>
+							<div class="label-text">Radio 1</div>
+						</label>
+						<label class="label">
+							<label for="Radio Button" class="visuallyhidden"></label>
+							<input class="radio-input" type="radio" name="x" value="No" />
+							<div class="radio-design"></div>
+							<div class="label-text">Radio 2</div>
+						</label>
+					</div>
+
+					<div class="grid-columns-span">
+						<label class="label">
+							<input type="checkbox" name="Names" value="" class="checkbox-input" />
+							<div class="checkbox-design"></div>
+							<div class="label-text">Checkbox 1</div>
+						</label>
+
+						<label class="label">
+							<input type="checkbox" name="Names" value="" class="checkbox-input" />
+							<div class="checkbox-design"></div>
+							<div class="label-text">Checkbox 2</div>
+						</label>
+					</div>
+
+					<div class="grid-columns-span">
+						<label for="Comments" class="visuallyhidden">Comments</label>
+						<textarea class="comments" rows="5" maxlength="2000" name="COMMENTS" placeholder="Comments"></textarea>
+						<span>Comments</span>
+					</div>
+
+					<!-- <div class="g-recaptcha" data-sitekey=""></div> -->
+
+					<div id="submit-button" class="grid-columns-span">
+						<input type="submit" name="submit" value="submit" class="button" />
+					</div>
+					<div><p class="disclaimer">Disclaimer...</p></div>
+				</form>
+			</div>
+			<div class="flex-order-2">
+				<Image src={banner} alt="" />
+			</div>
+		</div>
 	</div>
 </Layout>
 
@@ -42,10 +146,9 @@ import RegisterForm from '../components/RegisterForm';
 		--input-checkbox-bg-clr: blue;
 		--input-background: #fff;
 		--input-background-focus: #f9f9f9;
-		--input-focus-boxshadow: 0 0 10px #ddd;
+		--input-focus-boxshadow: 0 0 5px #ccc;
 		--input-transition: all ease 0.3s;
 		--input-min-height: 34px;
-		--input-error-clr: #777;
 	}
 
 	/* ======================
@@ -119,24 +222,15 @@ import RegisterForm from '../components/RegisterForm';
 		position: relative;
 	}
 
-	form p {
-		margin: 3px 0 0;
-		font-size: 9px;
-		letter-spacing: 0.5px;
-		font-weight: bold;
-		color: var(--input-error-clr);
-		font-style: italic;
-	}
-
-	form button {
+	form .button {
 		border: 0;
 		padding: 0.5rem 1rem;
 		background: var(--theme-clr);
 		color: #fff;
 		font-weight: bold;
 		cursor: pointer;
-		text-transform: uppercase;
 		border-radius: var(--input-border-radius);
+		text-transform: uppercase;
 	}
 
 	form span {
@@ -273,7 +367,6 @@ import RegisterForm from '../components/RegisterForm';
 		overflow: auto;
 		height: auto;
 		font-family: inherit;
-		margin: var(--input-margin);
 		font-weight: var(--input-font-weight);
 		background: var(--input-background);
 		border-radius: var(--input-border-radius);
@@ -286,7 +379,7 @@ import RegisterForm from '../components/RegisterForm';
 		width: 100%;
 		min-height: var(--input-min-height);
 		padding: var(--input-padding);
-		margin-bottom: 0.25rem;
+		margin: 0 0 1rem;
 		font-size: var(--input-font-size);
 		text-transform: uppercase;
 		font-weight: var(--input-font-weight);
@@ -304,7 +397,7 @@ import RegisterForm from '../components/RegisterForm';
 	}
 	select:focus {
 		outline: none;
-		border: var(--input-border);
+		border: var(--input-focus-border);
 		background-color: var(--input-background-focus);
 		box-shadow: var(--input-focus-boxshadow);
 		transition:

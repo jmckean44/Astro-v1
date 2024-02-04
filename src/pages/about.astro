@@ -10,10 +10,9 @@ import banner from '../img/banner.jpg';
 
 <Layout {pageTitle}>
 	<div class="container top">
-		<div class="flex">
+		<div class="container-width">
 			<h1>{pageTitle}</h1>
 		</div>
-
 		<div class="flex">
 			<div>
 				<h2>Heading 2</h2>
@@ -22,16 +21,17 @@ import banner from '../img/banner.jpg';
 					lorem sed elementum. Vestibulum luctus consectetur risus at aliquet. Donec ac sapien malesuada, congue neque ultrices, fringilla velit. Suspendisse potenti. Maecenas ac elit sem. Suspendisse
 					malesuada ligula eu efficitur vulputate.
 				</p>
-				<Image src={banner} alt="" format="avif" />
 			</div>
-			<div>
+		</div>
+
+		<div class="container top">
+			<div class="container-width">
 				<h3>Heading 3</h3>
 				<p>
 					Mauris tincidunt urna a elit ultricies porttitor. Donec vestibulum nibh euismod lectus rutrum sollicitudin. Aliquam luctus urna volutpat erat malesuada sodales. Etiam dapibus interdum est,
 					sit amet aliquet turpis accumsan non.
 				</p>
-			</div>
-			<div>
+
 				<h4>Heading 4</h4>
 				<p>
 					Mauris tincidunt urna a elit ultricies porttitor. Donec vestibulum nibh euismod lectus rutrum sollicitudin. Aliquam luctus urna volutpat erat malesuada sodales. Etiam dapibus interdum est,
@@ -40,19 +40,19 @@ import banner from '../img/banner.jpg';
 			</div>
 		</div>
 	</div>
+
+	<style>
+		.flex {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin: var(--container-position);
+			max-width: var(--container-width);
+			gap: var(--gap-lrg);
+		}
+
+		.flex > div {
+			flex: 1 1 auto;
+		}
+	</style>
 </Layout>
-
-<style>
-	.flex {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		margin: var(--container-position);
-		max-width: var(--container-width);
-		gap: var(--gap-lrg);
-	}
-
-	.flex > div {
-		flex: 1 1 auto;
-	}
-</style>

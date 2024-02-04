@@ -9,16 +9,26 @@ import banner from '../img/banner.jpg';
 		<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
 	</div>
 	<div class="container top bottom">
-		<div class="flex">
+		<div class="grid">
 			<div>
-				Images in the public/ folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a local
-				or authorized remote image’s dimensions, file type, and quality for control over your displayed image.
+				<p>
+					Images in the public/ folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a
+					local or authorized remote image’s dimensions, file type, and quality for control over your displayed image.
+				</p>
 			</div>
 			<div>
-				<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
+				<p>
+					Images in the public/ folder, as well as remote images not specifically configured in your project, can also be used with the Image component, but will not be processed. can transform a
+					local or authorized remote image’s dimensions, file type, and quality for control over your displayed image.
+				</p>
 			</div>
 		</div>
 	</div>
 </Layout>
 
-<style></style>
+<style>
+	.grid {
+		grid-template-columns: 1fr 2fr;
+		gap: var(--gap-med);
+	}
+</style>

@@ -14,6 +14,9 @@ const { dark = false } = Astro.props as Props;
 	.flex {
 		gap: var(--gap-med);
 	}
+	.flex > div {
+		flex: 1 1 0;
+	}
 	.card {
 		background: #fff;
 		padding: 20px;
@@ -36,5 +39,10 @@ const { dark = false } = Astro.props as Props;
 		font-weight: bold;
 		text-transform: uppercase;
 		font-size: 0.7rem;
+	}
+	@media (max-width: 800px) {
+		.flex {
+			flex-direction: column;
+		}
 	}
 </style>

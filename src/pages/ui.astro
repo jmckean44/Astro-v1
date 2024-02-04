@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Tabs from '../components/Tabs.astro';
+import Carousel from '../components/Carousel.astro';
 
 import arrowDown from '../img/arrow-down.svg';
 
@@ -166,7 +167,7 @@ const optimizedBackgroundImage = await getImage({ src: myImage });
 	}
 </style>
 
-<!-- <script>
+<script>
 	const swiper = new Swiper('.swiper', {
 		direction: 'fade',
 		crossFade: true,
@@ -183,5 +184,5 @@ const optimizedBackgroundImage = await getImage({ src: myImage });
 			prevEl: '.swiper-button-prev',
 		},
 	});
-</script> -->
+</script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
