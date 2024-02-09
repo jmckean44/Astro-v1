@@ -42,12 +42,13 @@ function RegisterForm() {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="grid">
 			<div>
-				<label for="First Name" className="visuallyhidden">
+				<label for="firstName" className="visuallyhidden">
 					First Name
 				</label>
 				<input
 					placeholder="First Name"
 					type="text"
+					id="firstName"
 					{...register('firstName', {
 						required: 'First name is required',
 						pattern: {
@@ -61,12 +62,13 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label for="Last Name" className="visuallyhidden">
+				<label for="lastName" className="visuallyhidden">
 					Last Name
 				</label>
 				<input
 					placeholder="Last Name"
 					type="text"
+					id="lastName"
 					{...register('lastName', {
 						required: 'Last name is required',
 						pattern: {
@@ -80,12 +82,13 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label for="Email" className="visuallyhidden">
+				<label for="email" className="visuallyhidden">
 					Email
 				</label>
 				<input
 					placeholder="Email"
 					type="text"
+					id="email"
 					{...register('email', {
 						required: 'Email is required',
 						pattern: {
@@ -99,18 +102,18 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label for="Phone" className="visuallyhidden">
+				<label for="phone" className="visuallyhidden">
 					Phone
 				</label>
-				<input placeholder="Phone" type="text" {...register('phone')} />
+				<input placeholder="Phone" type="text" id="phone" {...register('phone')} />
 				<span>Phone</span>
 			</div>
 
 			<div>
-				<label for="Select Options" className="visuallyhidden">
+				<label for="selectName" className="visuallyhidden">
 					Please select one
 				</label>
-				<select name="" title="Please select one">
+				<select name="select" id="selectName" title="Please select one">
 					<option value="">Please select one</option>
 					<option value="Internet">INTERNET</option>
 				</select>
@@ -118,38 +121,48 @@ function RegisterForm() {
 
 			<div className="grid-columns-span">
 				<label className="label">
-					<label for="Radio Buttons" className="visuallyhidden"></label>
-					<input className="radio-input" type="radio" name="x" value="Yes" />
+					<label for="radioName1" className="visuallyhidden">
+						radioName1
+					</label>
+					<input className="radio-input" type="radio" name="radioName" id="radioName1" value="Yes" />
 					<div className="radio-design"></div>
 					<div className="label-text">Radio 1</div>
 				</label>
 				<label className="label">
-					<label for="Radio Button" className="visuallyhidden"></label>
-					<input className="radio-input" type="radio" name="x" value="No" />
+					<label for="radioName2" className="visuallyhidden">
+						radioName2
+					</label>
+					<input className="radio-input" type="radio" name="radioName" id="radioName2" value="No" />
 					<div className="radio-design"></div>
 					<div className="label-text">Radio 2</div>
 				</label>
 			</div>
 
 			<div className="grid-columns-span">
-				<label className="label">
-					<input type="checkbox" name="Names" value="" className="checkbox-input" />
+				<label for="checkboxName1" className="visuallyhidden">
+					checkboxName1
+				</label>
+				<label className="label" for="checkboxName1">
+					<input type="checkbox" name="checkboxName" id="checkboxName1" value="" className="checkbox-input" />
 					<div className="checkbox-design"></div>
 					<div className="label-text">Checkbox 1</div>
 				</label>
 
-				<label className="label">
-					<input type="checkbox" name="Names" value="" className="checkbox-input" />
+				<label for="checkboxName2" className="visuallyhidden">
+					checkboxName2
+				</label>
+				<label className="label" for="checkboxName2">
+					<input type="checkbox" name="checkboxName" id="checkboxName2" value="" className="checkbox-input" />
 					<div className="checkbox-design"></div>
 					<div className="label-text">Checkbox 2</div>
 				</label>
 			</div>
 
 			<div className="grid-columns-span">
-				<label for="Comments" className="visuallyhidden">
+				<label for="comments" className="visuallyhidden">
 					Comments
 				</label>
-				<textarea placeholder="Comments" {...register('comments')}></textarea>
+				<textarea placeholder="Comments" id="comments" {...register('comments')}></textarea>
 				<span>Comments</span>
 			</div>
 

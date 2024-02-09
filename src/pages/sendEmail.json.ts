@@ -4,13 +4,23 @@ import { Resend } from 'resend';
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 // Outputs: /builtwith.json
+// MIDDLEWARE AUTHENTICATION
 export const POST: APIRoute = async ({ params, request }) => {
+	const body = await request.json();
+	const { to, from, subject, html, text } = body;
+
+	if (!to || !from || !subject || !html) {
+		return new Response(null, {
+			status: 404,
+			statusText: 'Did not provide all the data',
+		});
+	}
 	const send = await resend.emails.send({
-		from: 'admin@pbmarketing.ca',
-		to: 'jeff@pbmarketing.ca',
-		subject: 'Hello from Resend!',
-		html: '<h1>Hello</h1><p>How are you HTML.</p>',
-		text: 'Hello. Blocked HTML text version.</p>',
+		to,
+		from,
+		subject,
+		html,
+		text,
 	});
 
 	if (send.data) {

@@ -5,7 +5,7 @@
 	--theme-clr: #ff9000;
 	--font-clr: #333;
 	--font-size: 16px;
-	--page-bg: #fff;
+	--page-bg-clr: #fff;
 	--header-bg: #f9f9f9;
 	--footer-bg: #f9f9f9;
 	--theme-font: 'Helvetica', Arial, sans-serif;
@@ -17,6 +17,9 @@
 	--gap-med: 0 1.5rem;
 	--gap-sm: 0 1rem;
 	--animation-duration: 2s;
+	--primary-h: 221; /* HSL */
+	--primary-s: 72%;
+	--primary-l: 62%;
 }
 
 /* =============================================
@@ -121,7 +124,7 @@ body {
 	font-size: 16px;
 	color: #000;
 	height: 100%;
-	background: var(--page-bg);
+	background: var(--page-bg-clr);
 	position: relative; /* Required for static Slidebars to function properly. */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

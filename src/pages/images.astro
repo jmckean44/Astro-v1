@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import banner from '../img/banner.jpg';
+import banner2 from '../img/banner2.jpg';
+
+import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+// Background Image
+import { getImage } from 'astro:assets';
+import myImage from '../img/banner.jpg';
+const optimizedBackgroundImage = await getImage({ src: myImage });
+---
+
+<Layout>
+	<div class="container top">
+		<div class="flex">
+			<div><Image src={banner} alt="Banner Image" /></div>
+			<div><Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" /></div>
+			<div class="background-img" style={`background-image: url('${optimizedBackgroundImage.src}')`}></div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.flex > div {
+		flex: 1 1 0;
+	}
+	.background-img {
+		padding-bottom: 10%;
+		background-size: cover;
+		width: 100%;
+	}
+</style>
