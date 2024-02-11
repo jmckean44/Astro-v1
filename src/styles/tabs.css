@@ -15,12 +15,13 @@ input {
 .TabsList {
 	flex-shrink: 0;
 	display: flex;
-	border-bottom: 1px solid var(--theme-clr);
+	background-color: #f2f2f2;
+	/* border-bottom: 1px solid var(--theme-clr); */
 }
 
 .TabsTrigger {
 	font-family: inherit;
-	background-color: white;
+	/* background: #f2f2f2; */
 	padding: 15px 20px;
 	flex: 1;
 	display: flex;
@@ -28,7 +29,9 @@ input {
 	justify-content: center;
 	line-height: 1;
 	color: var(--theme-clr);
+	font-weight: bold;
 	user-select: none;
+	cursor: pointer;
 }
 .TabsTrigger:first-child {
 	border-top-left-radius: 3px;
@@ -36,11 +39,10 @@ input {
 .TabsTrigger:last-child {
 	border-top-right-radius: 3px;
 }
-.TabsTrigger:hover {
-	color: var(--theme-clr);
-}
+.TabsTrigger:hover,
 .TabsTrigger[data-state='active'] {
-	color: var(--theme-clr);
+	color: #fff;
+	background: var(--theme-clr);
 	box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
 }
 .TabsTrigger:focus {
@@ -138,12 +140,7 @@ input {
 	}
 }
 
-.DialogOverlay[data-state='open'],
-.DialogContent[data-state='open'] {
-	animation: fadeIn 300ms ease-out;
-}
-
-.DialogOverlay[data-state='closed'],
-.DialogContent[data-state='closed'] {
-	animation: fadeOut 300ms ease-in;
+.TabsTrigger[data-state='active'],
+.TabsContent[data-state='active'] {
+	animation: fadeIn 500ms ease-in;
 }

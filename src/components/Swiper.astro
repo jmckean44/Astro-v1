@@ -1,0 +1,14 @@
+---
+// import CarouselItem from 'CarouselItem.astro';
+
+interface Props {
+	items: { title: string; description: string }[];
+}
+
+const { items } = Astro.props;
+
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
+---

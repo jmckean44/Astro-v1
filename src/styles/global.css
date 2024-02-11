@@ -160,26 +160,26 @@ a:visited {
 } */
 
 /* =============================================
-	 MIN/MIX/CLAMP
+	 MIN/MAX/CLAMP
 ================================================ */
-.max {
-	width: max(600px, 70%);
-}
 .min {
 	width: min(600px, 70%);
 }
-.clamp {
-	font-size: clamp(1rem, 2vw, 70%);
+.max {
+	width: max(600px, 70%);
 }
 .minmax {
 	font-size: min(max(2.2rem, 9vw), 120px);
+}
+.clamp {
+	font-size: clamp(1rem, 2vw, 70%); /* smallest, ideal, largest values */
 }
 
 /* =============================================
 	 HEADINGS
 ================================================ */
 h1 {
-	font-size: min(max(2.2rem, 3vw), 60px);
+	font-size: clamp(2rem, 3vw 5em);
 }
 
 /* =============================================
@@ -243,7 +243,7 @@ footer ul {
 	width: 100%;
 }
 
-.container.bottom {
+.container.btm {
 	padding: 0 1.5rem 100px;
 }
 
@@ -251,7 +251,7 @@ footer ul {
 	padding: 100px 1.5rem 0;
 }
 
-.container.top.bottom {
+.container.top.btm {
 	padding: 100px 1.5rem 100px;
 }
 

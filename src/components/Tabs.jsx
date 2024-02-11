@@ -1,26 +1,27 @@
 import React from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
+//import { useTransition, animated, config } from 'react-spring';
 import { useSprings, animated } from '@react-spring/web';
 import '../styles/tabs.css';
 
-// function MyComponent() {
-// 	const [springs, api] = useSprings(
-// 		2,
-// 		() => ({
-// 			from: { opacity: 0 },
-// 			to: { opacity: 1 },
-// 		}),
-// 		[]
-// 	);
+function MyComponent() {
+	const [springs, api] = useSprings(
+		2,
+		() => ({
+			from: { opacity: 0 },
+			to: { opacity: 1 },
+		}),
+		[]
+	);
 
-// 	return (
-// 		<div>
-// 			{springs.map((props) => (
-// 				<animated.div style={props}>Hello World</animated.div>
-// 			))}
-// 		</div>
-// 	);
-// }
+	return (
+		<div>
+			{springs.map((props) => (
+				<animated.div style={props}>Hello World</animated.div>
+			))}
+		</div>
+	);
+}
 
 const TabsDemo = () => (
 	<Tabs.Root className="TabsRoot" defaultValue="tab1">

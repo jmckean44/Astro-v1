@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import mySwiper from '../components/Swiper.jsx';
+
+const photos = ['banner-1.jpg', 'banner-2.jpg'];
+//const altName = ['Slide 1', 'Slide 2'];
+---
+
+<Layout>
+	<div class="container top btm">
+		<mySwiper client:visible>
+			{
+				photos.map((photos, i) => (
+					<SwiperSlide>
+						<img src={`../img/${photos.toString()}`} alt="" />
+					</SwiperSlide>
+				))
+			}
+		</mySwiper>
+	</div>
+</Layout>
