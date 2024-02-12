@@ -27,7 +27,7 @@ h3 {
 .AccordionItem:focus-within {
 	position: relative;
 	z-index: 1;
-	/* box-shadow: 0 0 0 1px var(--theme-clr); */
+	box-shadow: 0 0 0 1px var(--theme-clr);
 }
 
 .AccordionHeader {
@@ -44,8 +44,6 @@ h3 {
 	justify-content: space-between;
 	line-height: 1;
 	color: var(--theme-clr);
-	border-bottom: 1px #f2f2f2 solid;
-	/* box-shadow: 0 1px 0 #ccc; */
 	background-color: #fff;
 }
 

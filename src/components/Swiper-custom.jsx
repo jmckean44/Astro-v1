@@ -24,7 +24,7 @@ export default function mySwiper() {
 				effect={'fade'}
 				speed={1000}
 				slidesPerView={1}
-				loop
+				loop={true}
 				className={styles.myswiper}
 				onInit={(swiper) => {
 					swiper.params.navigation.prev = swiperNavPrev.current;
