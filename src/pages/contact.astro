@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import banner from '../img/banner-1.jpg';
 import { Picture } from 'astro:assets';
-import RegisterForm from '../components/RegisterForm.jsx';
+import RegisterForm from '../components/Form.jsx';
 const pageTitle = 'Contact Us';
 ---
 
 <Layout title={pageTitle}>
-	<div class="banner-img">
+	<!-- <div class="banner-img">
 		<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
-	</div>
+	</div> -->
 	<div class="container top">
 		<div class="container-width">
 			<h1 class="slideInUp">{pageTitle}</h1>
@@ -131,7 +131,6 @@ const pageTitle = 'Contact Us';
 		color: var(--input-error-clr);
 		font-style: italic;
 	}
-
 	form button {
 		border: 0;
 		padding: 0.5rem 1rem;
@@ -229,7 +228,6 @@ const pageTitle = 'Contact Us';
 		width: 100%;
 		min-height: var(--input-min-height);
 		padding: var(--input-padding);
-		/* margin: var(--input-margin); */
 		font-family: var(--input-font);
 		font-size: var(--input-font-size);
 		font-weight: var(--input-font-weight);
