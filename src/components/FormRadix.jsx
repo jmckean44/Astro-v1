@@ -1,9 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import FormCheckboxes from '../components/FormCheckboxes.jsx';
-import FormRadios from '../components/FormRadios.jsx';
-import SelectDropDown from '../components/FormSelect.jsx';
-import '../styles/form-main.css';
+import FormCheckboxes from './FormCheckboxes.jsx';
+import FormRadios from './FormRadios.jsx';
+import SelectDropDown from './FormSelect.jsx';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const onError = (errors, e) => console.log(errors, e);

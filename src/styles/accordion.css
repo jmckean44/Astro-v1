@@ -1,4 +1,5 @@
-/* reset */
+@import 'keyframes.css';
+
 button,
 h3 {
 	all: unset;
@@ -79,31 +80,4 @@ h3 {
 }
 .AccordionTrigger[data-state='open'] > .AccordionChevron {
 	transform: rotate(180deg);
-}
-
-@keyframes slideDown {
-	from {
-		height: 0;
-	}
-	to {
-		height: var(--radix-accordion-content-height);
-	}
-}
-
-@keyframes slideUp {
-	from {
-		height: var(--radix-accordion-content-height);
-	}
-	to {
-		height: 0;
-	}
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
 }

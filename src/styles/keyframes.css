@@ -1,50 +1,44 @@
 @keyframes fadeIn {
-	0% {
-		opacity: 0%;
+	from {
+		opacity: 0;
 	}
-	100% {
-		opacity: 100%;
+	to {
+		opacity: 1;
 	}
-}
-.fadeIn {
-	animation: fadeIn 2s;
-}
-
-@keyframes fadeOut {
-	0% {
-		opacity: 100%;
-	}
-	100% {
-		opacity: 0%;
-	}
-}
-.fadeOut {
-	animation: fadeOut 2s;
 }
 
 @keyframes fadeOut {
 	from {
-		transform: translateY(-100%);
+		opacity: 1;
 	}
 	to {
-		transform: translateY(0%);
+		opacity: 0;
 	}
 }
 
 @keyframes slideDown {
 	from {
-		transform: translateY(0%);
+		height: 0;
 	}
 	to {
-		transform: translateY(100%);
+		height: var(--radix-accordion-content-height);
 	}
 }
 
 @keyframes slideUp {
 	from {
-		transform: translateY(-100%);
+		height: var(--radix-accordion-content-height);
 	}
 	to {
-		transform: translateY(0%);
+		height: 0;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
