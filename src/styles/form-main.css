@@ -9,7 +9,7 @@
 	--input-button-bg: var(--theme-clr);
 	--input-border: 1px #ccc solid;
 	--input-border-radius: 3px;
-	--input-padding: 0.5rem 0.6rem;
+	--input-padding: 0.7rem 0.75rem;
 	--input-margin: 0 0 1rem;
 	--input-checkbox-bg-clr: #ccc;
 	--input-radio-bg-clr: #ccc;
@@ -18,7 +18,7 @@
 	--input-boxshadow: 0 0 10px #ccc;
 	--input-boxshadow-focus: 0 0 10px #ddd;
 	--input-transition: all ease 0.3s;
-	/* --input-min-height: 34px; */
+	--input-line-height: 1.25;
 	--input-error-clr: #777;
 }
 
@@ -119,7 +119,7 @@ form span.helperText {
 	right: 5px;
 	font-size: 9px;
 	padding: 3px 5px;
-	line-height: 1;
+	line-height: var(--input-line-height);
 	font-weight: bold;
 	color: var(--theme-clr);
 	text-transform: uppercase;
@@ -135,6 +135,10 @@ form textarea:focus + span,
 form input:focus ~ label + span {
 	opacity: 1;
 	transition: var(--input-transition);
+}
+
+form .message {
+	font-weight: bold;
 }
 
 .disclaimer {
@@ -197,7 +201,6 @@ textarea {
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
-	min-height: var(--input-min-height);
 	padding: var(--input-padding);
 	/* margin: var(--input-margin); */
 	font-family: var(--input-font);
@@ -210,6 +213,7 @@ textarea {
 	border-radius: var(--input-border-radius);
 	border: var(--input-border);
 	letter-spacing: var(--input-font-spacing);
+	line-height: var(--input-line-height);
 	transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -283,6 +287,20 @@ select:focus {
 /* =============================
    LABELS
 ================================ */
+.Label {
+	color: var(--theme-clr);
+	padding-left: 5px;
+	padding-right: 20px;
+	font-size: var(--input-font-size);
+	font-weight: bold;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.Label.radio {
+	margin-left: 1.25rem;
+}
+
 /* .label {
 	display: inline-flex;
 	align-items: center;

@@ -8,6 +8,7 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const POST: APIRoute = async ({ params, request }) => {
 	const body = await request.json();
 	const { to, from, subject, html, text } = body;
+	console.log({ to, from, subject, html, text });
 
 	if (!to || !from || !subject || !html) {
 		return new Response(null, {

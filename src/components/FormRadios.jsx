@@ -1,31 +1,23 @@
 import React from 'react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
-import '../styles/form-radio.css';
+import '../styles/form-radios.css';
 
 const RadioButtons = () => (
 	<RadioGroup.Root className="RadioGroupRoot" defaultValue="default" aria-label="View density">
-		<div>
-			<RadioGroup.Item className="RadioGroupItem" value="default" id="r1">
+		<div className="radioContainer">
+			<RadioGroup.Item className="RadioGroupItem" name="notWORKING" value="Radio Button 1" id="r1">
 				<RadioGroup.Indicator className="RadioGroupIndicator" />
 			</RadioGroup.Item>
-			<label className="Label" htmlFor="r1">
-				Default
+			<label className="Label radio" htmlFor="r1">
+				Radio 1
 			</label>
 		</div>
-		<div>
-			<RadioGroup.Item className="RadioGroupItem" value="comfortable" id="r2">
+		<div className="radioContainer">
+			<RadioGroup.Item className="RadioGroupItem" name="notWORKING" value="Radio Button 2" id="r2">
 				<RadioGroup.Indicator className="RadioGroupIndicator" />
 			</RadioGroup.Item>
-			<label className="Label" htmlFor="r2">
-				Comfortable
-			</label>
-		</div>
-		<div>
-			<RadioGroup.Item className="RadioGroupItem" value="compact" id="r3">
-				<RadioGroup.Indicator className="RadioGroupIndicator" />
-			</RadioGroup.Item>
-			<label className="Label" htmlFor="r3">
-				Compact
+			<label className="Label radio" htmlFor="r2">
+				Radio 2
 			</label>
 		</div>
 	</RadioGroup.Root>

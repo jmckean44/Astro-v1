@@ -4,50 +4,60 @@ import FormCheckboxes from './FormCheckboxes.jsx';
 import FormRadios from './FormRadios.jsx';
 import SelectDropDown from './FormSelect.jsx';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const onError = (errors, e) => console.log(errors, e);
+//formState: { errors, touchFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, submitCount }
+//console.log({ submitCount });
+
+// let renderCount = 0;
+// renderCount++;
+// <p>({renderCount / 2})</p>
+
+// const onSubmit = (data) => {
+// 	console.log('Form submitted!', data);
+// 	return null;
+// };
+
+// const onError = (errors, e) => console.log(errors, e);
+
+//const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// await sleep(1000);
+// if (data.firstName === 'Jeff') {
+// 	console.log(JSON.stringify(data));
+// } else {
+// 	console.log('There is an error');
+// }
 
 function RegisterForm() {
 	const {
 		register,
 		handleSubmit,
-		watch,
-		formState: { errors, isDirty },
-	} = useForm({
-		defaultValues: {
-			firstName: '',
-			lastName: '',
-		},
-	});
-
-	console.log('isDirty', isDirty);
+		setError,
+		formState: { errors, isSubmitting },
+	} = useForm();
 
 	const onSubmit = async (data) => {
-		// const formData = new FormData(e.currentTarget);
-		// const email = formData.get('email');
-		// for (let [key, value] of formData.entries()) {
-		// 	console.log({ key, value });
-		// }
-		//console.log(watch('firstName'));
-		await sleep(1000);
-		if (data.firstName === 'bill') {
-			alert(JSON.stringify(data));
-		} else {
-			alert('There is an error');
+		try {
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+			console.log(JSON.stringify(data));
+			//throw new Error();
+		} catch (error) {
+			setError('root', {
+				message: 'Error message...',
+			});
 		}
 	};
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="grid">
 			<div>
-				<label for="firstName" className="visuallyhidden">
+				<label htmlFor="firstName" className="visuallyhidden">
 					First Name
 				</label>
 				<input
-					placeholder="First Name"
 					type="text"
 					id="firstName"
-					aria-invalid={errors.name ? 'true' : 'false'}
+					placeholder="First Name"
+					//aria-invalid={errors.name ? 'true' : 'false'}
 					{...register('firstName', {
 						required: 'First name is required',
 						pattern: {
@@ -61,13 +71,13 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label for="lastName" className="visuallyhidden">
+				<label htmlFor="lastName" className="visuallyhidden">
 					Last Name
 				</label>
 				<input
-					placeholder="Last Name"
 					type="text"
 					id="lastName"
+					placeholder="Last Name"
 					{...register('lastName', {
 						required: 'Last name is required',
 						pattern: {
@@ -81,13 +91,13 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label for="email" className="visuallyhidden">
+				<label htmlFor="email" className="visuallyhidden">
 					Email
 				</label>
 				<input
-					placeholder="Email"
-					type="text"
+					type="email"
 					id="email"
+					placeholder="Email"
 					{...register('email', {
 						required: 'Email is required',
 						pattern: {
@@ -101,76 +111,38 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label for="phone" className="visuallyhidden">
+				<label htmlFor="phone" className="visuallyhidden">
 					Phone
 				</label>
-				<input placeholder="Phone" type="text" id="phone" {...register('phone')} />
+				<input type="tel" id="phone" placeholder="Phone" {...register('phone')} />
 				<span className="helperText">Phone</span>
 			</div>
 
 			<div>
 				<SelectDropDown />
-				{/* <label for="selectName" className="visuallyhidden">
-					Please select one
-				</label>
-				<select name="select" id="selectName" title="Please select one">
-					<option value="">Please select one</option>
-					<option value="Internet">INTERNET</option>
-				</select> */}
 			</div>
 
 			<div className="grid-columns-span">
 				<FormRadios />
-				{/* <label className="label">
-					<label for="radioName1" className="visuallyhidden">
-						radioName1
-					</label>
-					<input className="radio-input" type="radio" name="radioName" id="radioName1" value="Yes" />
-					<div className="radio-design"></div>
-					<div className="label-text">Radio 1</div>
-				</label>
-				<label className="label">
-					<label for="radioName2" className="visuallyhidden">
-						radioName2
-					</label>
-					<input className="radio-input" type="radio" name="radioName" id="radioName2" value="No" />
-					<div className="radio-design"></div>
-					<div className="label-text">Radio 2</div>
-				</label> */}
 			</div>
 
 			<div className="grid-columns-span">
 				<FormCheckboxes />
-				{/* <label for="checkboxName1" className="visuallyhidden">
-					checkboxName1
-				</label>
-				<label className="label" for="checkboxName1">
-					<input type="checkbox" name="checkboxName" id="checkboxName1" value="" className="checkbox-input" />
-					<div className="checkbox-design"></div>
-					<div className="label-text">Checkbox 1</div>
-				</label>
-
-				<label for="checkboxName2" className="visuallyhidden">
-					checkboxName2
-				</label>
-				<label className="label margin-left" for="checkboxName2">
-					<input type="checkbox" name="checkboxName" id="checkboxName2" value="" className="checkbox-input" />
-					<div className="checkbox-design"></div>
-					<div className="label-text">Checkbox 2</div>
-				</label> */}
 			</div>
 
 			<div className="grid-columns-span">
-				<label for="comments" className="visuallyhidden">
+				<label htmlFor="comments" className="visuallyhidden">
 					Comments
 				</label>
-				<textarea placeholder="Comments" id="comments" {...register('comments')}></textarea>
+				<textarea type="text" rows="5" id="comments" placeholder="Comments"></textarea>
 				<span className="helperText">Comments</span>
 			</div>
 
+			{/* {errors.root && <div className="message">{errors.root.message}</div>} */}
+
 			<div className="grid-columns-span">
-				<button type="submit" className="button">
-					Submit
+				<button type="submit" className="button" disabled={isSubmitting}>
+					{isSubmitting ? 'Sending...' : 'Submit'}
 				</button>
 			</div>
 

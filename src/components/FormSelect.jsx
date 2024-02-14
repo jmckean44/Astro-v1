@@ -6,23 +6,23 @@ import '../styles/form-select.css';
 
 const SelectDropDown = () => (
 	<Select.Root>
-		<Select.Trigger className="SelectTrigger" aria-label="How Did You Hear?">
+		<Select.Trigger className="SelectTrigger" aria-label="How Did You Hear?" name="hear">
 			<Select.Value placeholder="How Did You Hear?" />
 			<Select.Icon className="SelectIcon">
 				<ChevronDownIcon />
 			</Select.Icon>
 		</Select.Trigger>
 		<Select.Portal>
-			<Select.Content className="SelectContent">
+			<Select.Content className="SelectContent" position="popper" sideOffset={5}>
 				<Select.ScrollUpButton className="SelectScrollButton">
 					<ChevronUpIcon />
 				</Select.ScrollUpButton>
 				<Select.Viewport className="SelectViewport">
 					<Select.Group>
 						{/* <Select.Label className="SelectLabel">How Did You Hear?</Select.Label> */}
-						<SelectItem value="apple">Internet</SelectItem>
+						<SelectItem value="Internet">Internet</SelectItem>
 						<Select.Separator className="SelectSeparator" />
-						<SelectItem value="banana">Radio</SelectItem>
+						<SelectItem value="Magazine">Magazine</SelectItem>
 					</Select.Group>
 				</Select.Viewport>
 				<Select.ScrollDownButton className="SelectScrollButton">

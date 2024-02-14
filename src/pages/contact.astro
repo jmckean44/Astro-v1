@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 // import banner from '../img/banner-1.jpg';
 // import { Picture } from 'astro:assets';
-import RegisterForm from '../components/Form.jsx';
+import Form from '../components/Form.jsx';
 const pageTitle = 'Contact Us';
 ---
 
@@ -20,7 +20,7 @@ const pageTitle = 'Contact Us';
 	<div class="container top btm">
 		<div class="flex">
 			<div class="flex-order-1">
-				<RegisterForm client:only="react" />
+				<Form client:only="react" />
 			</div>
 			<div class="flex-order-2">
 				<!-- <Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" /> -->

@@ -8,6 +8,14 @@ import { useForm } from 'react-hook-form';
 // renderCount++;
 // <p>({renderCount / 2})</p>
 
+// const RegisterForm = () => {
+// 	const {
+// 		register,
+// 		handleSubmit,
+// 		watch,
+// 		formState: { errors },
+// 	} = useForm();
+
 // const onSubmit = (data) => {
 // 	console.log('Form submitted!', data);
 // 	return null;
@@ -25,22 +33,22 @@ function RegisterForm() {
 	} = useForm();
 
 	const onSubmit = async (data) => {
-		await sleep(500);
-		if (data.firstName === 'Jeff') {
+		await sleep(1000);
+		if (data.firstName === 'jeff') {
 			console.log(JSON.stringify(data));
 		} else {
 			console.log('There is an error');
 		}
 	};
 
-	// const checkboxValues = (getValues) => {
-	// 	console.log(getValues);
+	// const checkboxValues = () => {
+	// 	console.log(getValues(['email']));
 	// };
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="grid">
 			<div>
-				<label htmlFor="firstName" className="visuallyhidden">
+				<label for="firstName" className="visuallyhidden">
 					First Name
 				</label>
 				<input
@@ -80,7 +88,7 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label htmlFor="email" className="visuallyhidden">
+				<label for="email" className="visuallyhidden">
 					Email
 				</label>
 				<input
@@ -100,7 +108,7 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label htmlFor="phone" className="visuallyhidden">
+				<label for="phone" className="visuallyhidden">
 					Phone
 				</label>
 				<input placeholder="Phone" type="tel" id="phone" {...register('phone')} />
@@ -108,19 +116,18 @@ function RegisterForm() {
 			</div>
 
 			<div>
-				<label htmlFor="selectName" className="visuallyhidden">
+				<label for="selectName" className="visuallyhidden">
 					Please select one
 				</label>
 				<select name="select" id="selectName" title="Please select one" {...register('select')}>
 					<option value="">Please select one</option>
-					<option value="Internet">Internet</option>
-					<option value="Internet">Magazine</option>
+					<option value="Internet">INTERNET</option>
 				</select>
 			</div>
 
 			<div className="grid-columns-span">
 				<label className="label">
-					<label htmlFor="radioName1" className="visuallyhidden">
+					<label for="radioName1" className="visuallyhidden">
 						radioName1
 					</label>
 					<input className="radio-input" type="radio" name="radioName" id="radioName1" value="Yes" {...register('radioName')} />
@@ -128,7 +135,7 @@ function RegisterForm() {
 					<div className="label-text">Radio 1</div>
 				</label>
 				<label className="label">
-					<label htmlFor="radioName2" className="visuallyhidden">
+					<label for="radioName2" className="visuallyhidden">
 						radioName2
 					</label>
 					<input className="radio-input" type="radio" name="radioName" id="radioName2" value="No" {...register('radioName')} />
@@ -138,27 +145,27 @@ function RegisterForm() {
 			</div>
 
 			<div className="grid-columns-span">
-				<label htmlFor="checkboxName1" className="visuallyhidden">
+				<label for="checkboxName1" className="visuallyhidden">
 					checkboxName1
 				</label>
-				<label className="label" htmlFor="checkboxName1">
-					<input type="checkbox" name="checkboxes" value="Checkbox Value 1" id="checkboxName1" className="checkbox-input" {...register('checkboxes')} />
+				<label className="label" for="checkboxName1">
+					<input type="checkbox" name="checkboxes" id="checkboxName1" value="" className="checkbox-input" {...register('checkboxes')} />
 					<div className="checkbox-design"></div>
 					<div className="label-text">Checkbox 1</div>
 				</label>
 
-				<label htmlFor="checkboxName2" className="visuallyhidden">
+				<label for="checkboxName2" className="visuallyhidden">
 					checkboxName2
 				</label>
-				<label className="label margin-left" htmlFor="checkboxName2">
-					<input type="checkbox" name="checkboxes" value="Checkbox Value 2" id="checkboxName2" className="checkbox-input" {...register('checkboxes')} />
+				<label className="label margin-left" for="checkboxName2">
+					<input type="checkbox" name="checkboxes" id="checkboxName2" value="" className="checkbox-input" {...register('checkboxes')} />
 					<div className="checkbox-design"></div>
 					<div className="label-text">Checkbox 2</div>
 				</label>
 			</div>
 
 			<div className="grid-columns-span">
-				<label htmlFor="comments" className="visuallyhidden">
+				<label for="comments" className="visuallyhidden">
 					Comments
 				</label>
 				<textarea placeholder="Comments" typ="text" id="comments" rows="5" {...register('comments')}></textarea>
