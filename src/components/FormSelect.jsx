@@ -5,8 +5,8 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons
 import '../styles/form-select.css';
 
 const SelectDropDown = () => (
-	<Select.Root>
-		<Select.Trigger className="SelectTrigger" aria-label="How Did You Hear?" name="hear">
+	<Select.Root name="hear">
+		<Select.Trigger className="SelectTrigger" aria-label="How Did You Hear?">
 			<Select.Value placeholder="How Did You Hear?" />
 			<Select.Icon className="SelectIcon">
 				<ChevronDownIcon />

@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+// import banner from '../img/banner-1.jpg';
+// import { Picture } from 'astro:assets';
+import RegisterForm from '../components/FormRadix.jsx';
+import '../styles/form-main.css';
+const pageTitle = 'Contact Us';
+---
+
+<Layout title={pageTitle}>
+	<!-- <div class="banner-img">
+		<Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" />
+	</div> -->
+	<div class="container top">
+		<div class="container-width">
+			<h1 class="slideInUp">{pageTitle}</h1>
+			<p>Fields marked with an astericks * are required.</p>
+		</div>
+	</div>
+
+	<div class="container top btm">
+		<div class="flex">
+			<div class="flex-order-1">
+				<RegisterForm client:only="react" />
+			</div>
+			<div class="flex-order-2">
+				<!-- <Picture src={banner} formats={['avif', 'webp']} quality="" alt="Banner Image" /> -->
+			</div>
+		</div>
+	</div>
+</Layout>

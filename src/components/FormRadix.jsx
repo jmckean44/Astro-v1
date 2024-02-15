@@ -4,29 +4,6 @@ import FormCheckboxes from './FormCheckboxes.jsx';
 import FormRadios from './FormRadios.jsx';
 import SelectDropDown from './FormSelect.jsx';
 
-//formState: { errors, touchFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, submitCount }
-//console.log({ submitCount });
-
-// let renderCount = 0;
-// renderCount++;
-// <p>({renderCount / 2})</p>
-
-// const onSubmit = (data) => {
-// 	console.log('Form submitted!', data);
-// 	return null;
-// };
-
-// const onError = (errors, e) => console.log(errors, e);
-
-//const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-// await sleep(1000);
-// if (data.firstName === 'Jeff') {
-// 	console.log(JSON.stringify(data));
-// } else {
-// 	console.log('There is an error');
-// }
-
 function RegisterForm() {
 	const {
 		register,
@@ -42,7 +19,7 @@ function RegisterForm() {
 			//throw new Error();
 		} catch (error) {
 			setError('root', {
-				message: 'Error message...',
+				//message: 'Error message...',
 			});
 		}
 	};
@@ -56,7 +33,7 @@ function RegisterForm() {
 				<input
 					type="text"
 					id="firstName"
-					placeholder="First Name"
+					placeholder="First Name *"
 					//aria-invalid={errors.name ? 'true' : 'false'}
 					{...register('firstName', {
 						required: 'First name is required',
@@ -66,7 +43,7 @@ function RegisterForm() {
 						},
 					})}
 				/>
-				<span className="helperText">First Name</span>
+				<span className="helperText">First Name *</span>
 				{errors.firstName && <p>{errors.firstName.message}</p>}
 			</div>
 
@@ -77,7 +54,7 @@ function RegisterForm() {
 				<input
 					type="text"
 					id="lastName"
-					placeholder="Last Name"
+					placeholder="Last Name *"
 					{...register('lastName', {
 						required: 'Last name is required',
 						pattern: {
@@ -97,7 +74,7 @@ function RegisterForm() {
 				<input
 					type="email"
 					id="email"
-					placeholder="Email"
+					placeholder="Email *"
 					{...register('email', {
 						required: 'Email is required',
 						pattern: {
@@ -134,7 +111,7 @@ function RegisterForm() {
 				<label htmlFor="comments" className="visuallyhidden">
 					Comments
 				</label>
-				<textarea type="text" rows="5" id="comments" placeholder="Comments"></textarea>
+				<textarea type="text" rows="5" id="comments" placeholder="Comments" {...register('comments')}></textarea>
 				<span className="helperText">Comments</span>
 			</div>
 
